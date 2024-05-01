@@ -1,26 +1,33 @@
 import UserModel from "../models/user";
 import { Auth } from "../interfaces/auth.interface";
-import { User } from "interfaces/user.interface";
+import { User } from "../interfaces/user.interface";
+import { encrypt, verified } from "../utils/bcrypt.handle";
+import { msgNotFoundHttp } from "utils/msgNotFound.handler";
 
 export const registerNewUserService = async ({username,password,name,lastname}:User) => {
-    try {
         const checkUserModelExist=await UserModel.findOne({username});
         if(checkUserModelExist){
             return("User already exist");
         }
-        const registerNewUser=await UserModel.create({username,password,name,lastname});
+        const passHash= await encrypt(password);
+        const registerNewUser = await UserModel.create({
+          username,
+          password: passHash,
+          name,
+          lastname,
+        });
         return registerNewUser;
-    }
-    catch (error) {
-        throw error;
-    }
 };
 
-const loginUserService = async () => {
-    try {
-
+export const loginUserService = async ({username,password}:Auth) => {
+    const CheckIs=await UserModel.findOne({username});
+    if(!CheckIs){
+        return "not found";
     }
-    catch (error) {
-        throw error;
+    const passwordHash=CheckIs.password;
+    const isCorrect=await verified(password,passwordHash);
+    if(!isCorrect){
+        return "wrong password";
     }
+    return CheckIs;
 }

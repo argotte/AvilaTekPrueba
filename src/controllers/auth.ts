@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { handleHttp } from "../utils/error.handler";
-import { registerNewUserService } from "../services/auth";
+import { registerNewUserService,loginUserService } from "../services/auth";
+import { msgNotFoundHttp } from "../utils/msgNotFound.handler";
 
 const registerController = async ({body}: Request, res: Response) => {
     try {
@@ -12,12 +13,21 @@ const registerController = async ({body}: Request, res: Response) => {
     }
 };
 
-const loginController = async (req: Request, res: Response) => {
-    try {
-
+const loginController = async ({ body }: Request, res: Response) => {
+  try {
+    const {username,password}=body;
+    const responseUser = await loginUserService({ username, password });
+    if(responseUser==="not found"){
+        msgNotFoundHttp(res,"user");
+        return;
     }
-    catch (error) {
-        handleHttp(res, "error in login", error);
+    if(responseUser==="wrong password"){
+        res.status(403).send("wrong password");
+        return;
     }
+    res.send(responseUser);
+  } catch (error) {
+    handleHttp(res, "error in login", error);
+  }
 };
 export { registerController, loginController };
