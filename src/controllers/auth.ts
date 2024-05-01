@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { handleHttp } from "../utils/error.handler";
 import { registerNewUserService,loginUserService } from "../services/auth";
 import { msgNotFoundHttp } from "../utils/msgNotFound.handler";
+import { wrongPassword } from "../utils/wrong.handle";
 
 const registerController = async ({body}: Request, res: Response) => {
     try {
@@ -22,7 +23,7 @@ const loginController = async ({ body }: Request, res: Response) => {
         return;
     }
     if(responseUser==="wrong password"){
-        res.status(403).send("wrong password");
+        wrongPassword(res,"user");
         return;
     }
     res.send(responseUser);

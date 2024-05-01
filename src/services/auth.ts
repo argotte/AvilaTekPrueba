@@ -2,7 +2,6 @@ import UserModel from "../models/user";
 import { Auth } from "../interfaces/auth.interface";
 import { User } from "../interfaces/user.interface";
 import { encrypt, verified } from "../utils/bcrypt.handle";
-import { msgNotFoundHttp } from "utils/msgNotFound.handler";
 import { generateToken } from "../utils/jwt.handle";
 
 export const registerNewUserService = async ({username,password,name,lastname}:User) => {
