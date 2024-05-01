@@ -15,7 +15,6 @@ export const checkJWT = (req: IRequestExtended, res: Response, next: NextFunctio
     }
     const token = Bearertoken.split(" ").pop() as string;
     const ValidUser = verifyToken(token);
-    console.log(`${ValidUser} just entered`);
     if (!ValidUser) {
       res.status(409).send(`${ValidUser} non valid Token. Could be expired`);
       return;
