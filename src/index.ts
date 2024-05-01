@@ -13,6 +13,7 @@ import mongoose from "mongoose";
 const PORT= process.env.PORT || 3050;
 const app = express();
 app.use(cors({ origin: true, credentials: true }));
+app.use(express.json());
 app.use(router);
 app.use(bodyParser.json());
 app.use(cookieParser());
