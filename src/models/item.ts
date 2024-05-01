@@ -12,6 +12,10 @@ const itemSchema=new Schema<Product>({
     description:{
         type:String,
         required:true
+    },
+    stock:{
+        type:Number,
+        required:true
     }
 
 },

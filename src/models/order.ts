@@ -15,6 +15,10 @@ const itemSchemaForTheOrder = new Schema<Product>(
       type: Number,
       required: false,
     },
+    quantity: {
+      type: Number,
+      required: false,
+    },
   },
 );
 const orderSchema = new Schema<OrderList>(

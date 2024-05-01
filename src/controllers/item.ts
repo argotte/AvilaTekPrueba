@@ -1,8 +1,13 @@
 import { Request, Response } from "express";
 import { handleHttp } from "../utils/error.handler";
-import { insertItem,getItems as getItemsService, 
-    getItemById,updateItem as updateItemService,
-    deleteItem as deleteItemService } from "../services/item";
+import {
+  insertItem,
+  getItems as getItemsService,
+  getItemById,
+  updateItem as updateItemService,
+  deleteItem as deleteItemService,
+  getAvailableItemsService,
+} from "../services/item";
 import { msgNotFoundHttp } from "../utils/msgNotFound.handler";
 
 const getItem=async ({params}:Request,res:Response)=>{
@@ -29,6 +34,14 @@ const getItems=async (req:Request,res:Response)=>{
         handleHttp(res, "error in get item", error);
     }
 }
+const getAvailableItems = async (req: Request, res: Response) => {
+    try {
+        const response = await getAvailableItemsService();
+        res.send(response);
+    } catch (error) {
+        handleHttp(res, "error in get available items", error);
+    }
+    }
 
 const updateItem = async ({ params,body }: Request, res: Response) => {
   try {
@@ -70,4 +83,4 @@ const deleteItem=async({params}:Request,res:Response)=>{
 }
 
 
-export { getItem, getItems, updateItem, postItem, deleteItem};
+export { getItem, getItems, updateItem, postItem, deleteItem, getAvailableItems};
