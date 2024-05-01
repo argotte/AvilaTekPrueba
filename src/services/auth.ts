@@ -3,6 +3,7 @@ import { Auth } from "../interfaces/auth.interface";
 import { User } from "../interfaces/user.interface";
 import { encrypt, verified } from "../utils/bcrypt.handle";
 import { msgNotFoundHttp } from "utils/msgNotFound.handler";
+import { generateToken } from "../utils/jwt.handle";
 
 export const registerNewUserService = async ({username,password,name,lastname}:User) => {
         const checkUserModelExist=await UserModel.findOne({username});
@@ -29,5 +30,10 @@ export const loginUserService = async ({username,password}:Auth) => {
     if(!isCorrect){
         return "wrong password";
     }
-    return CheckIs;
+    const token=generateToken(CheckIs.username);
+    const data={
+        token,
+        user:CheckIs
+    }
+    return data;
 }
