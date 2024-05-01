@@ -44,6 +44,8 @@ const getItem = async ({ params }: Request, res: Response) => {
   }
 };
 
+
+
 const postItem = async ( req : IRequestExtended, res: Response) => {
   try {
     const newOrder: INewOrderDTO = {
@@ -85,4 +87,4 @@ for (const product of newOrder.product) {
   }
 };   
 
-export { getItems, getItem, postItem };
+export { getItems, getItem, postItem,};
