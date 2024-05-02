@@ -16,8 +16,12 @@ PORT=3050
 JWT_SECRET='lalela'
 ```
 y cambiar el user y password. Creé una para que puedan acceder.
+
+
 user:**avila**
+
 password:**tek**
+
 # Estructura de carpetas
 Sigue el patrón de diseño MVC y la estructura de un proyecto Node.js/Express típico.
 
