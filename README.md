@@ -29,9 +29,15 @@ user:**avila**
 
 password:**tek**
 
-#Swagger
+# Swagger
 
 Luego de poder ejecutar localmente la API, pueden acceder a los endpoints en el swager en  http://localhost:3050/api-docs/ (es el puerto que configuré por defecto).
+
+![image](https://github.com/argotte/AvilaTekPrueba/assets/74399264/08eb1e30-4bcd-49df-bad0-b66a466db06e)
+
+![image](https://github.com/argotte/AvilaTekPrueba/assets/74399264/debd538c-88ed-4cee-a4cf-3ceec6e820aa)
+
+
 
 # Estructura de carpetas
 Sigue el patrón de diseño MVC y la estructura de un proyecto Node.js/Express típico.
