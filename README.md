@@ -37,6 +37,9 @@ Luego de poder ejecutar localmente la API, pueden acceder a los endpoints en el 
 
 ![image](https://github.com/argotte/AvilaTekPrueba/assets/74399264/debd538c-88ed-4cee-a4cf-3ceec6e820aa)
 
+Tal y como lo pide la prueba, los endpoints de orders solo pueden usarse por usuarios autenticados (es decir, al introducir al jwt. Debes registrarte y logear un usuario para tener tu token).
+Las úrdenes tienen marcado el timestamp indicando la fecha y hora de cuándo fue realizado.
+
 
 
 # Estructura de carpetas
