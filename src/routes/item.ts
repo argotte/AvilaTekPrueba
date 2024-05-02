@@ -65,8 +65,12 @@ router.get("/:id", logMiddleware, getItem);
  *             properties:
  *               name:
  *                 type: string
+ *               price:
+ *                 type: number
  *               description:
  *                 type: string
+ *               stock:
+ *                 type: number
  *     responses:
  *       201:
  *         description: The created item.
@@ -95,8 +99,12 @@ router.post("/", logMiddleware, postItem);
  *             properties:
  *               name:
  *                 type: string
+ *               price:
+ *                 type: number
  *               description:
  *                 type: string
+ *               stock:
+ *                 type: number
  *     responses:
  *       200:
  *         description: The updated item.

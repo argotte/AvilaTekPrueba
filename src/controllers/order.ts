@@ -32,8 +32,8 @@ export interface INewOrderDTO{
 
 const getItem = async ({ params }: Request, res: Response) => {
   try {
-    const { id } = params;
-    const response = await getOrderService(id);
+    const { username } = params;
+    const response = await getOrderService(username);
     if (!response) {
       msgNotFoundHttp(res, "order");
       return;

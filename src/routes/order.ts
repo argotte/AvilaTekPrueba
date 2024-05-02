@@ -26,16 +26,16 @@ router.get("/", checkJWT, getItems);
 
 /**
  * @swagger
- * /order/{id}:
+ * /order/{username}:
  *   get:
  *     security:
  *       - BearerAuth: []
  *     tags:
  *       - Orders
- *     summary: Retrieve a specific order
+ *     summary: Retrieve all orders from a certain username
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: username
  *         required: true
  *         schema:
  *           type: string
@@ -43,7 +43,7 @@ router.get("/", checkJWT, getItems);
  *       200:
  *         description: A specific order.
  */
-router.get("/:id", checkJWT, getItem);
+router.get("/:username", checkJWT, getItem);
 
 /**
  * @swagger
