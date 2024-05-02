@@ -9,6 +9,7 @@ import {
   getAvailableItemsService,
 } from "../services/item";
 import { msgNotFoundHttp } from "../utils/msgNotFound.handler";
+import { getPaginationParams } from "../utils/pagination.handle";
 
 const getItem=async ({params}:Request,res:Response)=>{
     try{  
@@ -27,8 +28,7 @@ const getItem=async ({params}:Request,res:Response)=>{
 
 const getItems=async (req:Request,res:Response)=>{
     try{  
-        const page = Number(req.query.page) || 1;
-        const pageSize = Number(req.query.pageSize) || 3;
+        const { page, pageSize } = getPaginationParams(req);
         const response = await getItemsService(page, pageSize);
         res.send(response);
      }

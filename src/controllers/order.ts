@@ -9,7 +9,8 @@ import {
 import {getItemByName as getProductByName,updateItem as updateProduct} from "../services/item";
 import { msgNotFoundHttp } from "../utils/msgNotFound.handler";
 import { Product } from "../interfaces/product.interface";
-import { OrderList } from "interfaces/order.interface";
+import { OrderList } from "../interfaces/order.interface";
+import { getPaginationParams } from "../utils/pagination.handle";
 export interface IRequestExtended extends Request {
     user?: string | JwtPayload;
 }
@@ -19,9 +20,8 @@ export interface INewOrderDTO{
 }
  const getItems = async (req: IRequestExtended, res: Response) => {
   try {
-    const page = Number(req.query.page) || 1;
-    const pageSize = Number(req.query.pageSize) || 3;
-    const response = await getOrdersService(page, pageSize);      
+    const { page, pageSize } = getPaginationParams(req);
+    const response = await getOrdersService(page, pageSize);    
     if (!response) {
         msgNotFoundHttp(res, "orders");
         return;
