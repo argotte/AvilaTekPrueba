@@ -53,7 +53,7 @@ const postItem = async ( req : IRequestExtended, res: Response) => {
       username: (req.user as any).id, // Access the id of the user
     };
 
-    // cada prodcuto existe y tiene stock suficiente
+    // every product exixts and has enough stock
     const existingProducts = [];
 for (const product of newOrder.product) {
   const existingProduct = await getProductByName(product.name);
@@ -74,12 +74,12 @@ for (const product of newOrder.product) {
     existingProducts.push(existingProduct);
   }
 }
-    console.log('relax')
+   // console.log('relax')
     const dtoOrderList: OrderList = {
       product: existingProducts,
       username: newOrder.username,
     };
-    console.log(dtoOrderList);
+   // console.log(dtoOrderList);
     const response = await insertOrder(dtoOrderList);
     res.send({ data: response });
   } catch (error) {
