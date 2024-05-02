@@ -7,8 +7,10 @@ const getOrderService = async (username: string) => {
     const responseGet = await orderModel.find({username});
     return responseGet;
 };
- const getOrdersService = async () => {
-    const responseGet = await orderModel.find({});
+const getOrdersService = async (page: number, pageSize: number) => {
+    const responseGet = await orderModel.find({})
+        .skip((page - 1) * pageSize)
+        .limit(pageSize);
     return responseGet;
 };
 const insertOrder = async (item: OrderList) => {

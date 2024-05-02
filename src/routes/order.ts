@@ -18,6 +18,17 @@ const router = Router();
  *     tags:
  *       - Orders
  *     summary: Retrieve a list of all orders
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *         description: The page number
+ *       - in: query
+ *         name: pageSize
+ *         schema:
+ *           type: integer
+ *         description: The number of items per page
  *     responses:
  *       200:
  *         description: A list of orders.
