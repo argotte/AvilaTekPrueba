@@ -5,8 +5,10 @@ const insertItem=async (item:Product)=>{
     const responseInsert=await itemModel.create(item);
     return responseInsert;
 };
-const getItems=async ()=>{
-    const responseGet=await itemModel.find({});
+const getItems=async (page: number, pageSize: number)=>{
+    const responseGet=await itemModel.find({})
+        .skip((page - 1) * pageSize)
+        .limit(pageSize);
     return responseGet;
 }
 const getAvailableItemsService = async () => {

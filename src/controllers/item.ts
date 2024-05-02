@@ -27,7 +27,9 @@ const getItem=async ({params}:Request,res:Response)=>{
 
 const getItems=async (req:Request,res:Response)=>{
     try{  
-        const response = await getItemsService();
+        const page = Number(req.query.page) || 1;
+        const pageSize = Number(req.query.pageSize) || 3;
+        const response = await getItemsService(page, pageSize);
         res.send(response);
      }
     catch(error){
