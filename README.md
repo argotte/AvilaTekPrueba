@@ -15,12 +15,23 @@ MONGO_URL ='mongodb+srv://user:password@prueba0.pey2qxj.mongodb.net/?retryWrites
 PORT=3050
 JWT_SECRET='lalela'
 ```
+
 y cambiar el user y password. Creé una para que puedan acceder.
+
+Ya después de esto pueden correr la aplicación.
+
+``` bash
+npm start
+```
 
 
 user:**avila**
 
 password:**tek**
+
+#Swagger
+
+Luego de poder ejecutar localmente la API, pueden acceder a los endpoints en el swager en  http://localhost:3050/api-docs/ (es el puerto que configuré por defecto).
 
 # Estructura de carpetas
 Sigue el patrón de diseño MVC y la estructura de un proyecto Node.js/Express típico.
@@ -34,13 +45,21 @@ Controlador: en la carpeta src/controllers/ y definen cómo la aplicación respo
 El proyecto sigue una estructura de proyecto Node.js/Express típica:
 
 src/: Contiene todo el código fuente de tu aplicación.
+
 routes/: Define las rutas de tu aplicación.
+
 services/: Contiene la lógica de negocio de la aplicación.
+
 utils/: Contiene funciones de utilidad, como manejadores de errores.
+
 interfaces/: Define las interfaces TypeScript utilizadas en la api.
+
 models/: Define los modelos de datos de tu aplicación.
+
 middleware/: Contiene middleware de Express que puedes usar en tus rutas.
+
 index.ts: Es el punto de entrada de la aplicación.
+
 Se utiliza las variables de entorno para la configuración (como la URL de MongoDB), lo cual es una buena práctica para mantener seguros los datos sensibles. También se usa Swagger para documentar la API, lo cual es una excelente práctica para que sea más fácil de usar y entender.
 
 Como con cualquier elección de diseño, hay trade-offs y puede que no sea la mejor elección para todas las situaciones. En este caso, esta estructura y patrón de diseño son una buena elección para desarrollar una API de manera rápida y facil de mantener. 
